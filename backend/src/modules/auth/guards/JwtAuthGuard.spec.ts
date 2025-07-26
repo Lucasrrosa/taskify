@@ -1,8 +1,7 @@
-import { AccountEntity } from '@/modules/account/entities/account.entity'
 import { IS_PUBLIC_KEY } from '@/modules/auth/decorators/IsPublic.decorator'
+import { UserEntity } from '@/modules/auth/entities/user.entity'
 import { JwtAuthGuards } from '@/modules/auth/guards/JwtAuthGuard'
-import { FindUserByIdUseCase } from '@/modules/user/usecases/find-user-by-id.usecase'
-import { UserEntity } from '@/modules/user/user.entity'
+import { FindUserByIdUseCase } from '@/modules/auth/usecases/find-user-by-id/find-user-by-id.usecase'
 import { ExecutionContext } from '@nestjs/common'
 import { HttpArgumentsHost } from '@nestjs/common/interfaces'
 import { Reflector } from '@nestjs/core'
@@ -27,21 +26,7 @@ describe('JwtAuthGuard', () => {
     username: 'username',
     email: 'email',
     password: 'password',
-    account: {
-      id: 'accountId',
-    } as AccountEntity,
-    permissions: [
-      {
-        name: 'permission1',
-        description: 'description',
-        resource: { name: 'resource1', description: 'description', actions: [] },
-      },
-      {
-        name: 'permission2',
-        description: 'description',
-        resource: { name: 'resource2', description: 'description', actions: [] },
-      },
-    ],
+    createdAt: new Date(),
   } as any as UserEntity
 
   const context = {

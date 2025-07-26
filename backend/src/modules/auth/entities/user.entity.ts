@@ -1,5 +1,6 @@
+import { TaskEntity } from '@/modules/task/task.entity'
 import * as bcrypt from 'bcrypt'
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class UserEntity {
@@ -14,6 +15,9 @@ export class UserEntity {
 
   @Column()
   password: string
+
+  @OneToMany(() => TaskEntity, (task) => task.user)
+  tasks: TaskEntity[]
 
   constructor(data: Partial<UserEntity> = {}) {
     Object.assign(this, data)

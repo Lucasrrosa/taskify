@@ -1,4 +1,5 @@
 import enviromentConfig, { EnviromentConfigType } from '@/config/enviroment.config'
+import { TaskModule } from '@/modules/task/task.module'
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -23,6 +24,7 @@ import { AuthModule } from './auth/auth.module'
       inject: [ConfigService],
     }),
     AuthModule,
+    TaskModule,
   ],
   controllers: [],
   providers: [],
