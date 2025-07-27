@@ -4,14 +4,13 @@ import { List, Paper } from '@mui/material'
 
 type Props = {
   tasks: ITaskResponseDto[]
-  onEdit: (task: ITaskResponseDto) => void
 }
 
-export default function TaskList({ tasks, onEdit }: Props) {
+export default function TaskList({ tasks }: Props) {
   return (
     <List component={Paper} className='m-2 w-full max-w-[600px]'>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onEdit={onEdit} />
+        <TaskItem key={task.id} task={task} />
       ))}
     </List>
   )

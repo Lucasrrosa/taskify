@@ -31,7 +31,7 @@ export default function TaskTitle({ task }: Props) {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       {isEditing ? (
-        <TextField value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+        <TextField size='small' value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
       ) : (
         <Typography variant='body1'>{task.title}</Typography>
       )}

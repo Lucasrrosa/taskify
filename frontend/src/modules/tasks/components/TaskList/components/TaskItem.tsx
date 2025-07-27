@@ -7,7 +7,6 @@ import { IconButton, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 
 type Props = {
   task: ITaskResponseDto
-  onEdit: (task: ITaskResponseDto) => void
 }
 
 export default function TaskItem({ task }: Props) {
