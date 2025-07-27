@@ -31,6 +31,7 @@ export default function FormTextField<
                     helperText={error ? error.message : null}
                     label={label}
                     type={type}
+                    name={name}
                     inputProps={inputProps}
                     fullWidth={fullWidth}
                 />

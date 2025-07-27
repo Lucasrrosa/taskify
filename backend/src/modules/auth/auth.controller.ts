@@ -3,7 +3,7 @@ import { LoginParamsDto } from '@/modules/auth/dtos/login-params.dto'
 import { RegisterParamsDto } from '@/modules/auth/dtos/register-params.dto'
 import { LogUserInUseCase } from '@/modules/auth/usecases/log-user-in/log-user-in.usecase'
 import { RegisterUserUseCase } from '@/modules/auth/usecases/register-user/register-user.usecase'
-import { Body, Controller, Inject, Post } from '@nestjs/common'
+import { Body, Controller, HttpCode, HttpStatus, Inject, Post } from '@nestjs/common'
 
 @Controller('auth')
 export class AuthController {
@@ -15,12 +15,14 @@ export class AuthController {
 
   @IsPublic()
   @Post('login')
+  @HttpCode(HttpStatus.OK)
   login(@Body() loginDto: LoginParamsDto) {
     return this.logUserInUseCase.execute(loginDto)
   }
 
   @IsPublic()
   @Post('register')
+  @HttpCode(HttpStatus.CREATED)
   register(@Body() registerDto: RegisterParamsDto) {
     return this.registerUserUseCase.execute(registerDto)
   }

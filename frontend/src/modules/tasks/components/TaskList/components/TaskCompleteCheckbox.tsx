@@ -17,6 +17,7 @@ export default function TaskCompleteCheckbox({ task }: Props) {
   }
   return (
     <Checkbox
+      id={`task-complete-checkbox-${task.id}`}
       edge="start"
       checked={task.status === TaskStatusEnum.COMPLETED}
       tabIndex={-1}

@@ -17,6 +17,7 @@ export default function TaskFilter({ onFilterChange, filter }: Props) {
     <Paper className='m-2 w-full max-w-[600px] p-2 gap-2 flex flex-row justify-start items-center'>
         <Typography className='shrink-0' variant='subtitle1'>Filter by status:</Typography>
       <Select
+        name="task-status-filter"
         value={filter}
         onChange={(e) => handleFilterChange(e.target.value)}
         fullWidth

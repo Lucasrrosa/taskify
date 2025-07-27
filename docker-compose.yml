@@ -1,0 +1,49 @@
+services:
+  backend-test:
+    container_name: backend-test
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        DATABASE_URL: postgresql://postgres:postgres@db:5432/taskify-test
+        DATABASE_DIRECT_URL: postgresql://postgres:postgres@db:5432/taskify-test
+
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/taskify-test
+      DATABASE_DIRECT_URL: postgresql://postgres:postgres@db:5432/taskify-test
+      NODENV: production
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  frontend-test:
+    container_name: frontend-test
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:3000
+    environment:
+      VITE_PORT: 5173
+      PORT: 5173
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend-test
+#Postgresql database service
+  db:
+    container_name: db
+    image: postgres:17-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=taskify-test
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+volumes:
+  db_data:
+    driver: local
