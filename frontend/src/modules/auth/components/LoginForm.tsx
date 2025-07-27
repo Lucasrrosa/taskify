@@ -1,7 +1,7 @@
 import FormTextField from '@/components/form-fields/FormTextField'
 import { loginSchema, type LoginSchema } from '@/modules/auth/schemas/login.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button } from '@mui/material'
+import { Button, Link } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
 type LoginFormProps = {
@@ -31,6 +31,9 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
             <Button type="submit" variant="contained" color="primary">
                 Login
             </Button>
+            <Link href="/register" variant="body2">
+                Don't have an account? Register
+            </Link>
         </form>
     )
 }

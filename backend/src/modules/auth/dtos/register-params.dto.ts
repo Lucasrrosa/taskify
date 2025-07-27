@@ -7,7 +7,5 @@ export class RegisterParamsDto {
   @IsString()
   password: string
   @IsString()
-  name: string
-  @IsString()
   username: string
 }
