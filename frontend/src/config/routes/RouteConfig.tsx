@@ -13,7 +13,7 @@ export default function RouteConfig() {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-        </BrowserRouter>
+      </Routes>
+    </BrowserRouter>
   )
 }

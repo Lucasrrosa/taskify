@@ -4,7 +4,7 @@ import TaskList from '@/modules/tasks/components/TaskList'
 import type { TaskStatusEnum } from '@/modules/tasks/enums/TaskEnum'
 import { TaskstatusFilterEnum } from '@/modules/tasks/enums/TaskStatusFilterEnum'
 import { TasksRequests } from '@/modules/tasks/requests/TasksRequests'
-import { Stack, Typography } from '@mui/material'
+import { Paper, Skeleton, Stack, Typography } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
@@ -20,13 +20,17 @@ export default function TasksPage() {
   return (
     <>
       <Stack direction={'column'} className='w-full h-full flex flex-col items-center mt-2'>
-          <Typography variant='h5'>Taskify</Typography>
+        <Typography variant='h5'>Taskify</Typography>
         <TaskFilter
           filter={filter}
           onFilterChange={setFilter}
         />
         {isLoading ?
-          <div>Is loading</div> :
+          <Paper className='w-full max-w-[600px] p-2'>
+            <Skeleton height={30} />
+            <Skeleton height={30} />
+            <Skeleton height={30} />
+          </Paper> :
           <TaskList tasks={data!}/>}
       </Stack>
       <CreateTaskButton />

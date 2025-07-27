@@ -11,7 +11,7 @@ export class TaskEntity {
   title: string
 
   @Column({ type: 'text', nullable: true })
-  description: string
+  description?: string
 
   @Column({ type: 'enum', enum: TaskStatusEnum, nullable: false, default: TaskStatusEnum.PENDING })
   status: TaskStatusEnum
